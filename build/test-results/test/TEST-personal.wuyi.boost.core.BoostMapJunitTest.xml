@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="personal.wuyi.boost.core.BoostMapJunitTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-07-19T22:04:48" hostname="Wuyis-MacBook-Pro-2.local" time="0.005">
+  <properties/>
+  <testcase name="mapToPairPairTest" classname="personal.wuyi.boost.core.BoostMapJunitTest" time="0.001"/>
+  <testcase name="sortByKeyTest" classname="personal.wuyi.boost.core.BoostMapJunitTest" time="0.001"/>
+  <testcase name="reduceByKeyTest" classname="personal.wuyi.boost.core.BoostMapJunitTest" time="0.001"/>
+  <system-out><![CDATA[12 - DDD
+16 - CCC
+16 - BBB
+10 - AAA
+23 - KKK
+DDD - 12
+CCC - 16
+AAA - 10
+KKK - 23
+BBB - 16
+
+AAA - 10
+BBB - 16
+CCC - 16
+DDD - 12
+KKK - 23
+AAA - 3
+BBB - 2
+CCC - 1
+DDD - 5
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

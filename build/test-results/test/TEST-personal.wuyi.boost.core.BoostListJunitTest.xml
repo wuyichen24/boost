@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="personal.wuyi.boost.core.BoostListJunitTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2018-07-19T22:04:48" hostname="Wuyis-MacBook-Pro-2.local" time="0.025">
+  <properties/>
+  <testcase name="filterTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.008"/>
+  <testcase name="cartesianTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.009"/>
+  <testcase name="unionTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.0"/>
+  <testcase name="foreachTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.001"/>
+  <testcase name="distinctTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.0"/>
+  <testcase name="mapToPairListTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.002"/>
+  <testcase name="intersectionTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.001"/>
+  <testcase name="subtractTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.0"/>
+  <testcase name="mapTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.001"/>
+  <testcase name="flatMapTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.001"/>
+  <testcase name="countTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.0"/>
+  <testcase name="countByValue" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.0"/>
+  <testcase name="collectTest" classname="personal.wuyi.boost.core.BoostListJunitTest" time="0.0"/>
+  <system-out><![CDATA[AAA - 111
+AAA - 222
+AAA - 333
+AAA - 444
+AAA - 555
+AAA - 666
+AAA - 777
+BBB - 111
+BBB - 222
+BBB - 333
+BBB - 444
+BBB - 555
+BBB - 666
+BBB - 777
+ZZZ - 111
+ZZZ - 222
+ZZZ - 333
+ZZZ - 444
+ZZZ - 555
+ZZZ - 666
+ZZZ - 777
+CCC - 111
+CCC - 222
+CCC - 333
+CCC - 444
+CCC - 555
+CCC - 666
+CCC - 777
+CCC - 111
+CCC - 222
+CCC - 333
+CCC - 444
+CCC - 555
+CCC - 666
+CCC - 777
+CCC - 111
+CCC - 222
+CCC - 333
+CCC - 444
+CCC - 555
+CCC - 666
+CCC - 777
+EEE - 111
+EEE - 222
+EEE - 333
+EEE - 444
+EEE - 555
+EEE - 666
+EEE - 777
+FFF - 111
+FFF - 222
+FFF - 333
+FFF - 444
+FFF - 555
+FFF - 666
+FFF - 777
+FFF - 111
+FFF - 222
+FFF - 333
+FFF - 444
+FFF - 555
+FFF - 666
+FFF - 777
+AAA
+BBB
+ZZZ
+CCC
+CCC
+CCC
+EEE
+FFF
+FFF
+AAA - 1
+BBB - 1
+ZZZ - 1
+CCC - 1
+CCC - 1
+CCC - 1
+EEE - 1
+FFF - 1
+FFF - 1
+AAA - 1
+CCC - 3
+BBB - 1
+EEE - 1
+FFF - 2
+ZZZ - 1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
