@@ -12,29 +12,10 @@ For this boost project, the functionality of clustering-computing has been remov
 
 
 ## Getting Started
-#### Prerequisites
-- Java 8 SE
-- Gradle 3.4.1
-- Git
-#### Download
-You can use git clone to download:
-```
-git clone https://github.com/wuyichen24/boost.git
-```
-Or download ZIP file directly:
-[Download ZIP](https://github.com/wuyichen24/boost/archive/master.zip)
+Please see our [Wiki](https://github.com/wuyichen24/boost/wiki/Getting-Started) page.
 
-### IDE integration
-1. Eclipse
-   - Install [Buildship Gradle Integration](http://marketplace.eclipse.org/content/buildship-gradle-integration)
-     - Drag the “Install” button into your running Eclipse workspace.
-     - Follow the installation wizard
-     - Restart you Eclipse
-   - Import this gradle project into Eclipse
-
-2. IntelliJ
-
-## Usage
+## Documentation
+Please see our [Wiki](https://github.com/wuyichen24/boost/wiki/Overview) page.
 
 ## Download
 
