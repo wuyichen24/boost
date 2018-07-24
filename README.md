@@ -20,8 +20,8 @@ Please see our [Wiki](https://github.com/wuyichen24/boost/wiki/Getting-Started) 
 Please see our [Wiki](https://github.com/wuyichen24/boost/wiki/Overview) page.
 
 ## Download
-[Download ZIP](https://github.com/wuyichen24/boost/archive/master.zip)
-[Download JAR]()
+- [Download ZIP](https://github.com/wuyichen24/boost/archive/master.zip)
+- [Download JAR]()
 
 ## Contributing
 
