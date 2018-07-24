@@ -1,4 +1,6 @@
 # Boost
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0) 
+
 A series of data structures to simulate the functional programming in Java (like Apache Spark JavaRRD).
 
 
@@ -18,10 +20,13 @@ Please see our [Wiki](https://github.com/wuyichen24/boost/wiki/Getting-Started) 
 Please see our [Wiki](https://github.com/wuyichen24/boost/wiki/Overview) page.
 
 ## Download
+[Download ZIP](https://github.com/wuyichen24/boost/archive/master.zip)
+[Donwload JAR]
 
 ## Contributing
 
 ## License
+[Apache-2.0](https://opensource.org/licenses/Apache-2.0)
 
 ## Authors
 - **[Wuyi Chen](https://www.linkedin.com/in/wuyichen24/)**
