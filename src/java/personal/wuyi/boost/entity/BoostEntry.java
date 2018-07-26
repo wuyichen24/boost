@@ -21,7 +21,7 @@ import java.util.Map.Entry;
 import com.google.common.base.Objects;
 
 /**
- * The wrapper class for the entry of BoostMultimap.
+ * The wrapper class for the entry of {@code BoostMultimap}.
  * 
  * <p>This class is the combination of {@code AbstractMapEntry} and 
  * {@code ImmutableEntry}.

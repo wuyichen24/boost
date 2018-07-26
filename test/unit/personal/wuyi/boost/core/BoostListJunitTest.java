@@ -252,6 +252,4 @@ public class BoostListJunitTest {
 			System.out.println(entry.getKey() + " - " + entry.getValue());
 		}
 	}
-	
-	
 }
