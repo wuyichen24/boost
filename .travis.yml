@@ -8,6 +8,3 @@ notifications:
       - wuyichen24@gmail.com
     on_success: never
     on_failure: always
-
-after_success:
-    - ./gradlew jacocoTestReport coveralls
