@@ -1,5 +1,6 @@
 # Boost
 [![Build Status](https://travis-ci.org/wuyichen24/boost.svg?branch=master)](https://travis-ci.org/wuyichen24/boost)
+[![Coverage Status](https://coveralls.io/repos/github/wuyichen24/boost/badge.svg?branch=master)](https://coveralls.io/github/wuyichen24/boost?branch=master)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0) 
 
 A series of data structures to simulate the functional programming in Java (like Apache Spark JavaRRD).
