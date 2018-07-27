@@ -19,11 +19,11 @@ For this boost project, the functionality of clustering-computing has been remov
 Please see our [Wiki](https://github.com/wuyichen24/boost/wiki/Getting-Started) page.
 
 ## Documentation
-Please see our [Wiki](https://github.com/wuyichen24/boost/wiki/Overview) page.
+Please see our [Wiki](https://github.com/wuyichen24/boost/wiki) page.
 
 ## Download
 - [Download ZIP](https://github.com/wuyichen24/boost/archive/master.zip)
-- [Download JAR]()
+- [Download JAR](https://github.com/wuyichen24/boost/releases/download/v1.1/boost-1.1.jar)
 
 ## Contributing
 
