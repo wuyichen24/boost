@@ -346,7 +346,7 @@ public class BoostMultimap<K, V> {
 	 * 
 	 * @since   1.1
 	 */
-	Collection<V> createUnmodifiableEmptyCollection() {
+	private Collection<V> createUnmodifiableEmptyCollection() {
 	    return unmodifiableCollectionSubclass(createCollection());
 	}
 	
@@ -360,7 +360,7 @@ public class BoostMultimap<K, V> {
 	 * 
 	 * @since   1.1
 	 */
-	Collection<V> unmodifiableCollectionSubclass(Collection<V> collection) {
+	private Collection<V> unmodifiableCollectionSubclass(Collection<V> collection) {
 	    return Collections.unmodifiableList((List<V>) collection);
 	}
 	
@@ -376,7 +376,7 @@ public class BoostMultimap<K, V> {
 	 * 
 	 * @since   1.1
 	 */
-	Iterator<Entry<K, V>> entryIterator() {
+	private Iterator<Entry<K, V>> entryIterator() {
 		return new MultimapIterator<Map.Entry<K, V>>() {      
 			Entry<K, V> output(K key, V value) {
 				return new BoostEntry<>(key, value);
