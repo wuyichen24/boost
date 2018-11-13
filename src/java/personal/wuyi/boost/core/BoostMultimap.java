@@ -152,7 +152,7 @@ public class BoostMultimap<K, V> {
 	}
 	
 	/**
-	 * Check the existence of an provided value
+	 * Check the existence of an provided value.
 	 * 
 	 * @param  value
 	 *         The value needs to be checked.
@@ -173,7 +173,7 @@ public class BoostMultimap<K, V> {
 	}
 	
 	/**
-	 * Check the existence of an provided key-value pair
+	 * Check the existence of an provided key-value pair.
 	 * 
 	 * @param  key
 	 *         The key of the pair.
@@ -210,7 +210,7 @@ public class BoostMultimap<K, V> {
 	    Collection<V> collection = map.get(key);
 	    boolean result = collection != null && collection.remove(value);
 	    if (result) {       // Reduce the size only when the pair was existing in this BoostMultiMap  
-	    	totalSize--;
+	    		totalSize--;
 	    }
 	    return result;
 	}
