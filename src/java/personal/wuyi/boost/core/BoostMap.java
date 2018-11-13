@@ -41,15 +41,6 @@ import personal.wuyi.boost.entity.BoostPair;
  */
 public class BoostMap<K, V> extends BoostMultimap<K,V> {
 	/**
-	 * Constructs an empty {@code BoostMap}.
-	 * 
-	 * @since   1.1
-	 */
-	public BoostMap () {
-		super();
-	}
-	
-	/**
 	 * Merge the values for each key using an associative reduce function.
 	 * 
 	 * @param  obj

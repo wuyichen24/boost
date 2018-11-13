@@ -44,15 +44,6 @@ import personal.wuyi.boost.entity.BoostPair;
  */
 public class BoostList<E> extends ArrayList<E> {
 	private static final long serialVersionUID = 4923284901849746049L;
-
-	/**
-	 * Constructs an empty {@code BoostList}.
-	 * 
-	 * @since   1.1
-	 */
-	public BoostList () {
-		super();
-	}
 	
 	/**
 	 * Return a new {@code BoostList} containing only the elements that 
@@ -200,7 +191,7 @@ public class BoostList<E> extends ArrayList<E> {
 	}
 	
 	/**
-	 * Remove the contents of one RDD (e.g.,remove training data).
+	 * Remove the contents of one {@code BoostList} (e.g.,remove training data).
 	 * {1,2,3}.subtract({3,4,5}) = {1,2}
 	 * 
 	 * @param  other
