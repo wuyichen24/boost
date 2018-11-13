@@ -38,8 +38,8 @@ import com.google.common.base.Objects;
  * @param <V>
  */
 public class BoostEntry<K, V> implements Entry<K, V>  {
-	final K key;
-	final V value;
+	private final K key;
+	private final V value;
 
 	/**
 	 * Construct a {@code BoostEntry}.
