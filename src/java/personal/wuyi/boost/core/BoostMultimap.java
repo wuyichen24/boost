@@ -72,7 +72,7 @@ public class BoostMultimap<K, V> {
 	public List<V> get(K key) {
 		Collection<V> collection = map.get(key);
 		if (collection == null) {
-			collection = createCollection(key);
+			collection = createCollection();
 		}
 	    return (List<V>) collection;
 	}
@@ -96,7 +96,7 @@ public class BoostMultimap<K, V> {
 	public boolean put(K key, V value) {
 		Collection<V> collection = map.get(key);
 	    if (collection == null) {
-	    	collection = createCollection(key);
+	    	collection = createCollection();
 	    	if (collection.add(value)) {
 	    		totalSize++;
 	    		map.put(key, collection);
@@ -234,7 +234,7 @@ public class BoostMultimap<K, V> {
 	      return createUnmodifiableEmptyCollection();
 	    }
 
-	    Collection<V> output = createCollection();
+	    Collection<V> output = createEmptyList();
 	    output.addAll(collection);
 	    totalSize -= collection.size();
 	    collection.clear();
@@ -245,7 +245,7 @@ public class BoostMultimap<K, V> {
 	/**
 	 * Creates the collection of values for an explicitly provided key. 
 	 * 
-	 * <p>By default, it simply calls {@link #createCollection()}, which is 
+	 * <p>By default, it simply calls {@link #createEmptyList()}, which is 
 	 * the correct behavior for most implementations. The 
 	 * {@link LinkedHashMultimap} class overrides it.
 	 *
@@ -256,8 +256,8 @@ public class BoostMultimap<K, V> {
 	 * 
 	 * @since   1.1
 	 */
-	private Collection<V> createCollection(K key) {
-	    return createCollection();
+	private Collection<V> createCollection() {
+	    return createEmptyList();
 	}
 	
 	/**
@@ -274,7 +274,7 @@ public class BoostMultimap<K, V> {
 	 * 
 	 * @since   1.1
 	 */
-	private List<V> createCollection() {
+	private List<V> createEmptyList() {
 		return new ArrayList<>();
 	}
 	
@@ -347,7 +347,7 @@ public class BoostMultimap<K, V> {
 	 * @since   1.1
 	 */
 	private Collection<V> createUnmodifiableEmptyCollection() {
-	    return unmodifiableCollectionSubclass(createCollection());
+	    return unmodifiableCollectionSubclass(createEmptyList());
 	}
 	
 	/**
@@ -390,7 +390,7 @@ public class BoostMultimap<K, V> {
 	 * @since   1.1
 	 */
 	private class Entries extends AbstractCollection<Map.Entry<K, V>> {
-		BoostMultimap<K, V> multimap() {
+		private BoostMultimap<K, V> multimap() {
 			return BoostMultimap.this;
 		}
 
@@ -432,11 +432,11 @@ public class BoostMultimap<K, V> {
 	 * @since   1.1
 	 */
 	private abstract class MultimapIterator<T> implements Iterator<T> {
-	    final Iterator<Map.Entry<K, Collection<V>>> keyIterator;
+	    private final Iterator<Map.Entry<K, Collection<V>>> keyIterator;
 	    
-	    K             key;
-	    Collection<V> collection;
-	    Iterator<V>   valueIterator;
+	    private K             key;
+	    private Collection<V> collection;
+	    private Iterator<V>   valueIterator;
 
 	    @SuppressWarnings("unchecked")
 		MultimapIterator() {
