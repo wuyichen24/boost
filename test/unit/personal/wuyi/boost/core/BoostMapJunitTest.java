@@ -16,8 +16,14 @@
 
 package personal.wuyi.boost.core;
 
-import java.util.Map.Entry;
+import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.junit.Test;
 
 import personal.wuyi.boost.api.Function2;
@@ -66,10 +72,10 @@ public class BoostMapJunitTest {
 			}
 		});
 		
-		// No proper assertion tools for BoostMap, just use print for now.
-		for (Entry<String, Integer> entry : newMap.entries()) {
-			System.out.println(entry.getKey() + " - " + entry.getValue());
-		}
+		assertThat(newMap, IsBoostMapContaining.hasEntry("AAA", 3));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("BBB", 2));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("CCC", 1));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("DDD", 5));
 	}
 	
 	@Test
@@ -82,26 +88,21 @@ public class BoostMapJunitTest {
 			}
 		});
 		
-		// No proper assertion tools for BoostMap, just use print for now.
-		for (Entry<Integer, String> entry : newMap.entries()) {
-			System.out.println(entry.getKey().toString() + " - " + entry.getValue());
-		}
+		assertThat(newMap, IsBoostMapContaining.hasEntry(12, "DDD"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry(16, "CCC"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry(10, "AAA"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry(23, "KKK"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry(16, "BBB"));
 	}
 	
 	@Test
 	public void sortByKeyTest() {
 		BoostMap<String, Integer> map = buildBoostMap1();
 		
-		for (Entry<String, Integer> entry : map.entries()) {
-			System.out.println(entry.getKey() + " - " + entry.getValue());
-		}
-		System.out.println();
-		
 		map.sortByKey();
 		
-		// No proper assertion tools for BoostMap, just use print for now.
-		for (Entry<String, Integer> entry : map.entries()) {
-			System.out.println(entry.getKey() + " - " + entry.getValue());
-		}
+		Set<String> keySet = map.keySet();
+		List<String> keyList = new ArrayList<>(keySet);
+		assertThat(keyList, IsIterableContainingInOrder.contains("AAA", "BBB", "CCC", "DDD", "KKK"));
 	}
 }

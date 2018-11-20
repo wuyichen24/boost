@@ -19,8 +19,8 @@ package personal.wuyi.boost.core;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
+import org.hamcrest.collection.IsMapContaining;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -109,9 +109,9 @@ public class BoostListJunitTest {
 		BoostList<String> list = buildBoostList3();
 		
 		BoostList<Integer> newList = list.map(new Function<String, Integer>() {
-			  public Integer call(String s) { 
-			  		return Integer.parseInt(s) + 1; 
-			  }
+			public Integer call(String s) { 
+				return Integer.parseInt(s) + 1; 
+			}
 		});
 		
 		assertThat(newList, hasSize(7));
@@ -123,9 +123,9 @@ public class BoostListJunitTest {
 		BoostList<String> list = buildBoostList2();
 		
 		BoostList<String> newList = list.flatMap(new FlatMapFunction<String, String>() {
-			  public Iterable<String> call(String s) { 
-			  		return Arrays.asList(s.split(",")); 
-			  }
+			public Iterable<String> call(String s) { 
+				return Arrays.asList(s.split(",")); 
+			}
 		});
 		
 		assertThat(newList, hasSize(13));
@@ -142,10 +142,12 @@ public class BoostListJunitTest {
 			}
 		});
 		
-		// No proper assertion tools for BoostMap, just use print for now.
-		for (Entry<String, Integer> entry : newMap.entries()) {
-			System.out.println(entry.getKey() + " - " + entry.getValue());
-		}
+		assertThat(newMap, IsBoostMapContaining.hasEntry("AAA", 1));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("BBB", 1));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("ZZZ", 1));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("CCC", 1));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("EEE", 1));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("FFF", 1));
 	}
 	
 	@Test
@@ -209,10 +211,53 @@ public class BoostListJunitTest {
 		BoostList<String> other = buildBoostList3();
 		BoostMap<String, String> newMap = list.cartesian(other);
 		
-		// No proper assertion tools for BoostMap, just use print for now.
-		for (Entry<String, String> entry : newMap.entries()) {
-			System.out.println(entry.getKey() + " - " + entry.getValue());
-		}
+		assertThat(newMap, IsBoostMapContaining.hasEntry("AAA", "111"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("AAA", "222"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("AAA", "333"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("AAA", "444"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("AAA", "555"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("AAA", "666"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("AAA", "777"));
+		
+		assertThat(newMap, IsBoostMapContaining.hasEntry("BBB", "111"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("BBB", "222"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("BBB", "333"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("BBB", "444"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("BBB", "555"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("BBB", "666"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("BBB", "777"));
+		
+		assertThat(newMap, IsBoostMapContaining.hasEntry("CCC", "111"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("CCC", "222"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("CCC", "333"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("CCC", "444"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("CCC", "555"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("CCC", "666"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("CCC", "777"));
+		
+		assertThat(newMap, IsBoostMapContaining.hasEntry("EEE", "111"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("EEE", "222"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("EEE", "333"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("EEE", "444"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("EEE", "555"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("EEE", "666"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("EEE", "777"));
+		
+		assertThat(newMap, IsBoostMapContaining.hasEntry("FFF", "111"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("FFF", "222"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("FFF", "333"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("FFF", "444"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("FFF", "555"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("FFF", "666"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("FFF", "777"));
+		
+		assertThat(newMap, IsBoostMapContaining.hasEntry("ZZZ", "111"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("ZZZ", "222"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("ZZZ", "333"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("ZZZ", "444"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("ZZZ", "555"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("ZZZ", "666"));
+		assertThat(newMap, IsBoostMapContaining.hasEntry("ZZZ", "777"));
 	}
 	
 	@Test
@@ -247,9 +292,11 @@ public class BoostListJunitTest {
 		BoostList<String> list = buildBoostList1();
 		Map<String, Long> result = list.countByValue();
 		
-		// No proper assertion tools for BoostMap, just use print for now.
-		for (Entry<String, Long> entry : result.entrySet()) {
-			System.out.println(entry.getKey() + " - " + entry.getValue());
-		}
+		assertThat(result, IsMapContaining.hasEntry("AAA", 1L));
+		assertThat(result, IsMapContaining.hasEntry("CCC", 3L));
+		assertThat(result, IsMapContaining.hasEntry("BBB", 1L));
+		assertThat(result, IsMapContaining.hasEntry("EEE", 1L));
+		assertThat(result, IsMapContaining.hasEntry("FFF", 2L));
+		assertThat(result, IsMapContaining.hasEntry("ZZZ", 1L));
 	}
 }
