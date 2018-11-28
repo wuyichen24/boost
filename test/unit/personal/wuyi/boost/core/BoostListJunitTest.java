@@ -16,6 +16,7 @@
 
 package personal.wuyi.boost.core;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -262,12 +263,16 @@ public class BoostListJunitTest {
 	
 	@Test
 	public void foreachTest() {
+		List<String> stringList = new ArrayList<>();
+		
 		BoostList<String> list = buildBoostList1(); 
 		list.foreach(new VoidFunction<String>() {
 			public void call(String str) {
-				System.out.println(str);
+				stringList.add(str + "#");
 			}
 		});
+		
+		assertThat(stringList, contains("AAA#", "BBB#", "ZZZ#", "CCC#", "CCC#", "CCC#", "EEE#", "FFF#", "FFF#"));
 	}
 	
 	@Test

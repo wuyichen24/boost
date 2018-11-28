@@ -21,11 +21,14 @@ import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.CoreMatchers.is;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
 
+import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -124,10 +127,9 @@ public class BoostMultimapJunitTest {
 		map.put("zzz", 5);
 		map.sortByKey();
 		
-		// No proper assertion tools for BoostMultimap, just use print for now.
-		for(Entry<String, Integer> entry : map.entries()) {
-			System.out.println(entry.getKey() + " - " + entry.getValue());
-		}
+		Set<String> keySet = map.keySet();
+		List<String> keyList = new ArrayList<>(keySet);
+		assertThat(keyList, IsIterableContainingInOrder.contains("aaa", "ppp", "zzz"));
 	}
 	
 	@Test
@@ -137,20 +139,85 @@ public class BoostMultimapJunitTest {
 	
 	@Test
 	public void entriesTest() {
-		// No proper assertion tools for BoostMultimap, just use print for now.
-		for(Entry<String, Integer> entry : map.entries()) {
-			System.out.println(entry.getKey() + " - " + entry.getValue());
-		}
+		Collection<Entry<String, Integer>> entryCollection = map.entries();
+		Iterator<Entry<String,Integer>> iter = entryCollection.iterator();
+		Entry<String, Integer> entry1 = iter.next();
+		Assert.assertEquals("aaa",          entry1.getKey());
+		Assert.assertEquals(new Integer(1), entry1.getValue());
+		Entry<String, Integer> entry2 = iter.next();
+		Assert.assertEquals("aaa",          entry2.getKey());
+		Assert.assertEquals(new Integer(2), entry2.getValue());
+		Entry<String, Integer> entry3 = iter.next();
+		Assert.assertEquals("aaa",          entry3.getKey());
+		Assert.assertEquals(new Integer(3), entry3.getValue());
+		Entry<String, Integer> entry4 = iter.next();
+		Assert.assertEquals("bbb",          entry4.getKey());
+		Assert.assertEquals(new Integer(4), entry4.getValue());
+		Entry<String, Integer> entry5 = iter.next();
+		Assert.assertEquals("bbb",          entry5.getKey());
+		Assert.assertEquals(new Integer(5), entry5.getValue());
+		Entry<String, Integer> entry6 = iter.next();
+		Assert.assertEquals("bbb",          entry6.getKey());
+		Assert.assertEquals(new Integer(6), entry6.getValue());
 	}
 	
 	@Test
 	public void iteratorTest() {
-		Iterator<Entry<String,Integer>> iterator = map.entries().iterator();
+		// test hasNext on an empty collection (returns false)
+		BoostMultimap<String, Integer> emptyMap = new BoostMultimap<>();
+		Iterator<Entry<String,Integer>> emptyMapItr = emptyMap.entries().iterator();
+		Assert.assertFalse(emptyMapItr.hasNext());
 		
-		// No proper assertion tools for BoostMultimap, just use print for now.
-		while (iterator.hasNext()) {
-			Map.Entry<String,Integer> entry = (Map.Entry<String,Integer>) iterator.next();
-			System.out.println(entry.getKey() + " - " + entry.getValue());
-		}
+		// test hasNext on a collection with one item (returns true, several times)
+		BoostMultimap<String, Integer> nonEmptyMap1 = new BoostMultimap<>();
+		nonEmptyMap1.put("aaa", 1);
+		Iterator<Entry<String,Integer>> nonEmptyMapItr1 = nonEmptyMap1.entries().iterator();
+		Assert.assertTrue(nonEmptyMapItr1.hasNext());
+		Assert.assertTrue(nonEmptyMapItr1.hasNext());
+		Assert.assertTrue(nonEmptyMapItr1.hasNext());
+		Entry<String, Integer> mapEntry1 = nonEmptyMapItr1.next();
+		Assert.assertEquals("aaa",          mapEntry1.getKey());
+		Assert.assertEquals(new Integer(1), mapEntry1.getValue());
+		
+		// test remove on that collection: check size is 0 after
+		nonEmptyMapItr1.remove();
+		Assert.assertEquals(0, nonEmptyMap1.size());
+		
+		// test with a collection with several items, make sure the iterator goes through each item, in the correct order
+		BoostMultimap<String, Integer> nonEmptyMap2 = new BoostMultimap<>();
+		nonEmptyMap2.put("aaa", 1);
+		nonEmptyMap2.put("bbb", 2);
+		nonEmptyMap2.put("ccc", 3);
+		nonEmptyMap2.put("ddd", 4);
+		
+		Iterator<Entry<String,Integer>> nonEmptyMapItr2 = nonEmptyMap2.entries().iterator();
+		Entry<String, Integer> mapEntry2a = nonEmptyMapItr2.next();
+		Assert.assertEquals("aaa",          mapEntry2a.getKey());
+		Assert.assertEquals(new Integer(1), mapEntry2a.getValue());
+		Entry<String, Integer> mapEntry2b = nonEmptyMapItr2.next();
+		Assert.assertEquals("bbb",          mapEntry2b.getKey());
+		Assert.assertEquals(new Integer(2), mapEntry2b.getValue());
+		Entry<String, Integer> mapEntry2c = nonEmptyMapItr2.next();
+		Assert.assertEquals("ccc",          mapEntry2c.getKey());
+		Assert.assertEquals(new Integer(3), mapEntry2c.getValue());
+		Entry<String, Integer> mapEntry2d = nonEmptyMapItr2.next();
+		Assert.assertEquals("ddd",          mapEntry2d.getKey());
+		Assert.assertEquals(new Integer(4), mapEntry2d.getValue());
+		
+		// remove all elements from the collection: collection is now empty
+		Iterator<Entry<String,Integer>> nonEmptyMapItr3 = nonEmptyMap2.entries().iterator();
+		nonEmptyMapItr3.next();
+		nonEmptyMapItr3.remove();
+		Assert.assertEquals(3, nonEmptyMap2.size());
+		nonEmptyMapItr3.next();
+		nonEmptyMapItr3.remove();
+		Assert.assertEquals(2, nonEmptyMap2.size());
+		nonEmptyMapItr3.next();
+		nonEmptyMapItr3.remove();
+		Assert.assertEquals(1, nonEmptyMap2.size());
+		nonEmptyMapItr3.next();
+		nonEmptyMapItr3.remove();
+		Assert.assertEquals(0, nonEmptyMap2.size());
+		Assert.assertTrue(nonEmptyMap2.isEmpty());
 	}
 }
