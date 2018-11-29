@@ -36,7 +36,8 @@ public class BoostEntryTest {
 	@Test
 	public void equalsTest() {
 		BoostEntry<String, Integer> entryA = new BoostEntry<>("aaa", 123);
-		Assert.assertFalse(entryA.equals(null));
+		BoostEntry<String, Integer> entryB = null;
+		Assert.assertFalse(entryA.equals(entryB));
 		Assert.assertFalse(entryA.equals(new BoostEntry<>("bbb", 123)));
 		Assert.assertFalse(entryA.equals(new BoostEntry<>("aaa", 456)));
 		Assert.assertTrue(entryA.equals(new BoostEntry<>("aaa", 123)));

@@ -58,10 +58,13 @@ public class BoostMultimapJunitTest {
 	
 	@Test 
 	public void getTest() {
-		List<Integer> values = map.get("aaa");
+		List<Integer> values1 = map.get("aaa");
 		
-		assertThat(values, hasSize(3));
-		assertThat(values, contains(1, 2, 3));
+		assertThat(values1, hasSize(3));
+		assertThat(values1, contains(1, 2, 3));
+		
+		List<Integer> values2 = map.get("yyy");
+		assertThat(values2, hasSize(0));
 	}
 	
 	@Test
@@ -115,6 +118,10 @@ public class BoostMultimapJunitTest {
 	public void removeAllTest() {
 		map.removeAll("aaa");
 		Assert.assertEquals(3, map.size());
+		
+		// remove non-existing keys
+		Collection<Integer> valueList = map.removeAll("ccc");
+		Assert.assertEquals(0, valueList.size());
 	}
 	
 	@Test

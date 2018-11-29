@@ -97,18 +97,14 @@ public class BoostMultimap<K, V> {
 		Collection<V> collection = map.get(key);
 	    if (collection == null) {
 	    	collection = createCollection();
-	    	if (collection.add(value)) {
-	    		totalSize++;
-	    		map.put(key, collection);
-	    		return true;
-	    	} else {
-	        throw new AssertionError("New Collection violated the Collection spec");
-	    	}
-	    } else if (collection.add(value)) {
+	    	collection.add(value);
 	    	totalSize++;
+	    	map.put(key, collection);
 	    	return true;
 	    } else {
-	    	return false;
+	    	collection.add(value);
+	    	totalSize++;
+	    	return true;
 	    }
 	}
 	
@@ -231,7 +227,7 @@ public class BoostMultimap<K, V> {
 	    Collection<V> collection = map.remove(key);
 
 	    if (collection == null) {
-	      return createUnmodifiableEmptyCollection();
+	    	return createUnmodifiableEmptyCollection();
 	    }
 
 	    Collection<V> output = createEmptyList();
