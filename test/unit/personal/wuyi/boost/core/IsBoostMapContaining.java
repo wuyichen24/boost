@@ -31,9 +31,9 @@ import org.hamcrest.Matcher;
  * 
  * <p>Because of {@code IsMapContaining} is only applicable to test the 
  * classes which implements the {@code Map} interface. But {@code BoostMap} 
- * didn't implements the {@code Map} so that {@code IsMapContaining} can not 
- * be used to test {@code BoostMap}. So this class is the alternate solution 
- * for testing {@code BoostMap} in the same style.
+ * didn't implements the {@code Map} interface so that {@code IsMapContaining} 
+ * can not be used to test {@code BoostMap}. So this class is the alternate 
+ * solution for testing {@code BoostMap} in the same style.
  * 
  * @author  Wuyi Chen
  * @date    11/13/2018
@@ -124,6 +124,8 @@ public class IsBoostMapContaining<K, V> extends BaseMatcher<BoostMap<? extends K
      * @param  value
      *         The value that, in combination with the key, must be describe 
      *         at least one entry.
+     *         
+     * @return  The instance of the matcher for {@code BoostMap}.
      *         
      * @since   1.2
      */
