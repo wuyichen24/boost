@@ -304,4 +304,14 @@ public class BoostListJunitTest {
 		assertThat(result, IsMapContaining.hasEntry("FFF", 2L));
 		assertThat(result, IsMapContaining.hasEntry("ZZZ", 1L));
 	}
+	
+	@Test
+	public void takeTest() {
+		BoostList<String> list = buildBoostList3();
+		
+		Assert.assertEquals(0, list.take(-10).size());
+		Assert.assertEquals(0, list.take(0).size());
+		assertThat(list.take(3), contains("111", "222", "333"));
+		assertThat(list.take(20), contains("111", "222", "333", "444", "555", "666", "777"));
+	}
 }
