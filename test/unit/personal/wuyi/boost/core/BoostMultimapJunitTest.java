@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -129,7 +128,7 @@ public class BoostMultimapJunitTest {
 		
 		Set<String> keySet = map.keySet();
 		List<String> keyList = new ArrayList<>(keySet);
-		assertThat(keyList, IsIterableContainingInOrder.contains("aaa", "ppp", "zzz"));
+		assertThat(keyList, contains("aaa", "ppp", "zzz"));
 	}
 	
 	@Test

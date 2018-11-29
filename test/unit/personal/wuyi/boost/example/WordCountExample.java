@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package personal.wuyi.boost.core;
+package personal.wuyi.boost.example;
 
 import java.util.Arrays;
 import java.util.Map.Entry;
@@ -22,6 +22,8 @@ import java.util.Map.Entry;
 import personal.wuyi.boost.api.FlatMapFunction;
 import personal.wuyi.boost.api.Function2;
 import personal.wuyi.boost.api.PairFunction;
+import personal.wuyi.boost.core.BoostList;
+import personal.wuyi.boost.core.BoostMap;
 import personal.wuyi.boost.entity.BoostPair;
 
 public class WordCountExample {
